@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Amblace1</string>
+    <string name="app_logo">app_logo.jpg</string>
+    <string name="enter_mobile_number">Enter Mobile Number</string>
+    <string name="login">Login</string>
+    <string name="or_login_with">-----------------------------------Or login with-----------------------------------</string>
+    <string name="facebook">Facebook</string>
+    <string name="apple">Apple</string>
+    <string name="twitter">Twitter</string>
+    <string name="google">Google</string>
+    <string name="login2">Create Account</string>
+    <string name="or">OR</string>
+    <string name="logo">Logo</string>
+    <string name="enter_email">Enter email</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="Sign_In">SignIn</string>
+    <string name="name">Enter Your Name</string>
+    <string name="button">SIGNUP</string>
+    <string name="enter_email_address">Enter Email Address</string>
+    <string name="enter_your_name">Enter Your Name</string>
+    <string name="home_button">Home Button</string>
+    <string name="user_button">User Button</string>
+    <string name="Signout">SignOut</string>
+    <string name="android_studio_gmail_com">android.studio@gmail.com</string>
+    <string name="userimage">UserImage</string>
+    <string name="android_studio">Android Studio</string>
+    <string name="pickuplocation">PickUpLocation</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="services">Services</string>
+    <string name="activity">Activity</string>
+    <string name="search_destination">Search Destination</string>
+    <string name="current_location_icon">Current Location Icon</string>
+</resources>

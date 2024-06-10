@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "999081361730",
+    "project_id": "amblace1",
+    "storage_bucket": "amblace.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:999081361730:android:57c0a50d765d7637f2c8db",
+        "android_client_info": {
+          "package_name": "com.example.amblace1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLtPHHQLTixR3LCovpqt55t6dsirZOY4k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
