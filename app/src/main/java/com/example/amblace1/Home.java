@@ -6,6 +6,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -21,16 +22,23 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.amblace1.R;
+import com.firebase.geofire.GeoFire;
+import com.firebase.geofire.GeoLocation;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
 import java.util.List;
@@ -47,6 +55,9 @@ public class Home extends AppCompatActivity implements OnMapReadyCallback {
     FusedLocationProviderClient fusedLocationProviderClient;
     ImageView imgExpandable;
     BottomSheetRiderFragment mBottomSheet;
+    Button btnPickupRequest;
+    GeoFire geoFire;
+    Marker mUserMarker = null;
 
 
     @Override
@@ -77,6 +88,35 @@ public class Home extends AppCompatActivity implements OnMapReadyCallback {
             }
         });
 
+        btnPickupRequest = findViewById(R.id.button5);
+        btnPickupRequest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                requestPickupHere(FirebaseAuth.getInstance().getCurrentUser().getUid());
+            }
+        });
+
+    }
+
+    private void requestPickupHere(String uid) {
+        DatabaseReference dbRequest = FirebaseDatabase.getInstance().getReference("PickupRequest");
+        GeoFire mGeoFire = new GeoFire(dbRequest);
+        mGeoFire.setLocation(uid, new GeoLocation(currentLocation.getLatitude(), currentLocation.getLongitude()));
+
+        if (mUserMarker != null){
+            boolean isvisible = mUserMarker.isVisible();
+            mUserMarker.remove();
+        }else{
+            Log.d("Home","Pickup marker is not initialised");
+        }
+        mUserMarker = mMap.addMarker(new MarkerOptions()
+                .title("Pickup Here")
+                .snippet("")
+                .position(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()))
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+        mUserMarker.showInfoWindow();
+
+        btnPickupRequest.setText("Getting your Driver.....");
     }
 
     private void getLastLocation() {
