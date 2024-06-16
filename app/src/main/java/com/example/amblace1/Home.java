@@ -49,14 +49,12 @@ public class Home extends AppCompatActivity implements OnMapReadyCallback {
     ImageButton imgButton;
     private GoogleMap mMap;
     private final int FINE_PERMISSION_CODE = 1;
-    LatLng sydney;
     Button b4_sourcebutton;
     Location currentLocation;
     FusedLocationProviderClient fusedLocationProviderClient;
     ImageView imgExpandable;
     BottomSheetRiderFragment mBottomSheet;
     Button btnPickupRequest;
-    GeoFire geoFire;
     Marker mUserMarker = null;
 
 
@@ -146,15 +144,14 @@ public class Home extends AppCompatActivity implements OnMapReadyCallback {
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
         mMap.addMarker(new MarkerOptions().position(sydney).title("My Location"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney,15));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sydney,15.0f));
 
 
         Geocoder geocoder = new Geocoder(this,Locale.getDefault());
         try {
             List<Address> myaddress = geocoder.getFromLocation(sydney.latitude, sydney.longitude, 1);
             String address = myaddress.get(0).getAddressLine(0);
-            String city = myaddress.get(0).getLocality();
-            b4_sourcebutton.setText(address + " " + city);
+            b4_sourcebutton.setText(address);
         } catch (IOException e) {
             e.printStackTrace();
         }
