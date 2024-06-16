@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -44,6 +45,8 @@ public class Home extends AppCompatActivity implements OnMapReadyCallback {
     Button b4_sourcebutton;
     Location currentLocation;
     FusedLocationProviderClient fusedLocationProviderClient;
+    ImageView imgExpandable;
+    BottomSheetRiderFragment mBottomSheet;
 
 
     @Override
@@ -62,6 +65,15 @@ public class Home extends AppCompatActivity implements OnMapReadyCallback {
             public void onClick(View v) {
                 Intent i = new Intent(Home.this, User_Button_Activity.class);
                 startActivity(i);
+            }
+        });
+
+        imgExpandable = findViewById(R.id.imageView5);
+        mBottomSheet = BottomSheetRiderFragment.newInstance("Rider Bottom Sheet");
+        imgExpandable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mBottomSheet.show(getSupportFragmentManager(), mBottomSheet.getTag());
             }
         });
 

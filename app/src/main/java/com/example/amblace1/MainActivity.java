@@ -4,17 +4,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-import com.example.amblace1.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 public class MainActivity extends AppCompatActivity {
+
+    EditText p_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +31,20 @@ public class MainActivity extends AppCompatActivity {
             setContentView(R.layout.activity_main);
         }
 
+        p_name = findViewById(R.id.phone_number_input);
+
 
         Button btn = findViewById(R.id.login_button);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, SignIn.class);
-                startActivity(i);
+                if (p_name.getText().toString().isEmpty()) {
+                    p_name.setError("Enter your phone number");
+                    Toast.makeText(getApplicationContext(),"Enter your phone number",Toast.LENGTH_SHORT).show();
+                }else {
+                    Intent i = new Intent(MainActivity.this, SignIn.class);
+                    startActivity(i);
+                }
             }
         });
         Button btn1 = findViewById(R.id.button);

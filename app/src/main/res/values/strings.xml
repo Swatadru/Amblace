@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Amblace1</string>
+    <string name="app_name">Amblace</string>
     <string name="app_logo">app_logo.jpg</string>
     <string name="enter_mobile_number">Enter Mobile Number</string>
     <string name="login">Login</string>
@@ -21,13 +21,14 @@
     <string name="home_button">Home Button</string>
     <string name="user_button">User Button</string>
     <string name="Signout">SignOut</string>
-    <string name="android_studio_gmail_com">android.studio@gmail.com</string>
+    <string name="android_studio_gmail_com">swatadrupaul@gmail.com</string>
     <string name="userimage">UserImage</string>
-    <string name="android_studio">Android Studio</string>
+    <string name="android_studio">Swatadru Paul</string>
     <string name="pickuplocation">PickUpLocation</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="services">Services</string>
     <string name="activity">Activity</string>
     <string name="search_destination">Search Destination</string>
     <string name="current_location_icon">Current Location Icon</string>
+    <string name="find_driver">Find Ambulance</string>
 </resources>
